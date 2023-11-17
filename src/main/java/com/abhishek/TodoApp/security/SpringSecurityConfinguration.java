@@ -37,13 +37,15 @@ public class SpringSecurityConfinguration{
         return new BCryptPasswordEncoder();
        }
     @Bean
-        public SecurityFilterChain finlterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(
-                auth -> auth.anyRequest().authenticated());
-        httpSecurity.formLogin(Customizer.withDefaults());
-        httpSecurity.csrf().disable();
-        httpSecurity.headers().frameOptions().disable();
-        return httpSecurity.build();
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(
+                auth-> auth.anyRequest().authenticated());
+                http.formLogin(Customizer.withDefaults());
+                http.csrf().disable();
+                http.headers().frameOptions().disable();
+
+                return http.build();
+
     }
 
 }
